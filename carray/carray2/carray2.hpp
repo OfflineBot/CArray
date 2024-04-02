@@ -32,6 +32,7 @@ namespace CArray {
         Array1<T> std() const;
         Array1<T> sum() const;
         Array2<T> dot(Array2<T> &other) const;
+        Array2<T> t() const;
 
         // --- OPERATOR ---
 
@@ -41,27 +42,33 @@ namespace CArray {
 
         Array2<T> operator+(Array2<T> &other) const; 
         Array2<T> operator-(Array2<T> &other) const; 
-        Array2<T> operator*(Array2<T> &other) const; 
+        Array2<T> operator*(Array2<T> &other) const;
+        Array2<T> operator/(Array2<T> &other) const;
 
         void operator+=(Array2<T> &other); 
         void operator-=(Array2<T> &other); 
-        void operator*=(Array2<T> &other); 
+        void operator*=(Array2<T> &other);
+        void operator/=(Array2<T> &other);
 
         Array2<T> operator+(Array1<T> &other) const; 
         Array2<T> operator-(Array1<T> &other) const; 
-        Array2<T> operator*(Array1<T> &other) const; 
+        Array2<T> operator*(Array1<T> &other) const;
+        Array2<T> operator/(Array1<T> &other) const;
 
         void operator+=(Array1<T> &other); 
         void operator-=(Array1<T> &other); 
-        void operator*=(Array1<T> &other); 
+        void operator*=(Array1<T> &other);
+        void operator/=(Array1<T> &other);
 
         Array2<T> operator+(T other) const;
         Array2<T> operator-(T other) const;
         Array2<T> operator*(T other) const;
+        Array2<T> operator/(T other) const;
 
         void operator+=(T other); 
         void operator-=(T other); 
-        void operator*=(T other); 
+        void operator*=(T other);
+        void operator/=(T other);
     };
 }
 

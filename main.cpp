@@ -1,5 +1,6 @@
 
 #include "./carray/carray.hpp"
+#include <iostream>
 
 using namespace CArray;
 
@@ -7,6 +8,7 @@ int main() {
 
     int iterations = 10000;
     float learning_rate = 0.01;
+    float loss_break = 0.001;
     int input_size = 2;
     int hidden_size = 10;
     int output_size = 1;
@@ -24,6 +26,7 @@ int main() {
     Array2<float> new_input = data_input;
     Array2<float> new_input_norm = (new_input - input_mean) / input_std;
 
+
     float min = -1.0; float max = 1.0;
     Array2<float> w1(input_size, hidden_size);
     Array1<float> b1(hidden_size);
@@ -35,6 +38,23 @@ int main() {
     b2.random_uniform(min, max);
 
 
+    for (int i = 0; i < iterations; i++) {
+
+        // forward
+        Array2<float> z1 = linear(norm_input, w1, b1);
+        Array2<float> a1 = relu(z1);
+        Array2<float> z2 = linear(a1, w2, b2);
+
+        float loss = mse_loss(z2, norm_output);
+
+        // backward
+        Array2<float> delta2 = z2 - norm_output;
+        Array2<float> delta1 = delta2.dot(w2.t()) * deriv_sigmoid(z1);
+
+        if (i % 100 == 0)
+            printf("Iterations: %d | Loss: NOT IMPLEMENTED YET!\n", i);
+
+    }
 
     return 0;
 }

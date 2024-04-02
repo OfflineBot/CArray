@@ -24,7 +24,7 @@ CArray::Array2<T> CArray::Array2<T>::operator*(CArray::Array2<T> &other) const {
 }
 
 template<typename T>
-CArray::Array2<T> CArray::Array2<T>::operator*(CArray::Array1<T> &other) const {
+CArray::Array2<T> CArray::Array2<T>::operator*(Array2<float> other) const {
     std::size_t row1 = this->size()[0];
     std::size_t col1 = this->size()[1];
     std::size_t size = other.size();

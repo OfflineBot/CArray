@@ -52,7 +52,7 @@ namespace CArray {
 
         Array2<T> operator+(Array1<T> &other) const; 
         Array2<T> operator-(Array1<T> &other) const; 
-        Array2<T> operator*(Array1<T> &other) const;
+        Array2<T> operator*(Array2<float> other) const;
         Array2<T> operator/(Array1<T> &other) const;
 
         void operator+=(Array1<T> &other); 

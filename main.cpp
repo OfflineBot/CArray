@@ -49,7 +49,8 @@ int main() {
 
         // backward
         Array2<float> delta2 = z2 - norm_output;
-        Array2<float> delta1 = delta2.dot(w2.t()) * deriv_sigmoid(z1);
+        Array2<float> t_w2 = w2.t();
+        Array2<float> delta1 = delta2.dot(t_w2) * deriv_sigmoid(z1);
 
         if (i % 100 == 0)
             printf("Iterations: %d | Loss: NOT IMPLEMENTED YET!\n", i);

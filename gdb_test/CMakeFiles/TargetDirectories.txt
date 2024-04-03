@@ -1,0 +1,3 @@
+/mnt/c/Users/Flint/Desktop/correct_carray/gdb_test/CMakeFiles/main.dir
+/mnt/c/Users/Flint/Desktop/correct_carray/gdb_test/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Flint/Desktop/correct_carray/gdb_test/CMakeFiles/rebuild_cache.dir

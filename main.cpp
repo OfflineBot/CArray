@@ -73,8 +73,6 @@ int main() {
         b2 -= b2_gradient;
         w1 -= w1_gradient;
         b1 -= b1_gradient;
-
-        w2 -= (a1.t().dot(delta2) * learning_rate);
     }
 
     Array2<float> z1 = linear(new_input_norm, w1, b1);

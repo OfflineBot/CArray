@@ -17,14 +17,17 @@ int main() {
     Array1<float> input_mean = data_input.mean();
     Array1<float> input_std = data_input.std();
     Array2<float> norm_input = (data_input - input_mean) / input_std;
+    norm_input.replace(0, 0.001);
 
-    Array2<float> data_output = { {0}, {0}, {1}, {11} };
+    Array2<float> data_output = { {0}, {0}, {1}, {1} };
     Array1<float> output_mean = data_output.mean();
     Array1<float> output_std = data_output.std();
     Array2<float> norm_output = (data_output - output_mean) / output_std;
+    norm_output.replace(0, 0.001);
 
-    Array2<float> new_input = data_input;
+    Array2<float> new_input = { {1, 1}, {0, 0}, {1, 0}, {0, 1}, {1, 0}, {1, 0} };
     Array2<float> new_input_norm = (new_input - input_mean) / input_std;
+    new_input_norm.replace(0, 0.001);
 
 
     float min = -1.0; float max = 1.0;
@@ -47,15 +50,38 @@ int main() {
 
         float loss = mse_loss(z2, norm_output);
 
+        if (loss < loss_break) {
+            printf("Loss break at iteration: %d!\n", i);
+            break;
+        }
+
+        if (i % 100 == 0)
+            printf("Iterations: %d | Loss: %f\n", i, loss);
         // backward
         Array2<float> delta2 = z2 - norm_output;
         Array2<float> t_w2 = w2.t();
-        Array2<float> delta1 = delta2.dot(t_w2) * deriv_sigmoid(z1);
 
-        if (i % 100 == 0)
-            printf("Iterations: %d | Loss: NOT IMPLEMENTED YET!\n", i);
+        Array2<float> d_sig = deriv_sigmoid(z1);
+        Array2<float> delta1 = delta2.dot(t_w2);
+        delta1 *= d_sig;
 
+        Array2<float> w2_gradient = a1.t().dot(delta2) * learning_rate;
+        Array1<float> b2_gradient = delta2.sum() * learning_rate;
+        Array2<float> w1_gradient = norm_input.t().dot(delta1) * learning_rate;
+        Array1<float> b1_gradient = delta1.sum() * learning_rate;
+        w2 -= w2_gradient;
+        b2 -= b2_gradient;
+        w1 -= w1_gradient;
+        b1 -= b1_gradient;
     }
+
+    Array2<float> z1 = linear(new_input_norm, w1, b1);
+    Array2<float> a1 = relu(z1);
+    Array2<float> z2 = linear(a1, w2, b2);
+    Array2<float> output = z2;
+    output *= output_std;
+    output += output_mean;
+    output.print();
 
     return 0;
 }

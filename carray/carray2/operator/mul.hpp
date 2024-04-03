@@ -13,7 +13,7 @@ CArray::Array2<T> CArray::Array2<T>::operator*(CArray::Array2<T> &other) const {
     std::size_t row2 = other.size()[0];
     std::size_t col2 = other.size()[1];
 
-    if(row1 != row2 || col1 == col2) throw std::out_of_range("Matricies dont match");
+    if(row1 != row2 || col1 != col2) throw std::out_of_range("Matricies dont match");
 
     CArray::Array2<T> out = *this;
     for (int i = 0; i < row1; i++)
@@ -24,7 +24,7 @@ CArray::Array2<T> CArray::Array2<T>::operator*(CArray::Array2<T> &other) const {
 }
 
 template<typename T>
-CArray::Array2<T> CArray::Array2<T>::operator*(Array2<float> other) const {
+CArray::Array2<T> CArray::Array2<T>::operator*(Array1<T> &other) const {
     std::size_t row1 = this->size()[0];
     std::size_t col1 = this->size()[1];
     std::size_t size = other.size();

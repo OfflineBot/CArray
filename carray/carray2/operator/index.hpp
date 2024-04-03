@@ -12,7 +12,7 @@ CArray::Array1<T>& CArray::Array2<T>::operator[](int index) {
 }
 
 template<typename T>
-CArray::Array1<T>& CArray::Array2<T>::operator[](int index) const {
+const CArray::Array1<T>& CArray::Array2<T>::operator[](int index) const {
     if (index >= this->_array.size()) throw std::out_of_range("Index out of range");
     return this->_array[index];
 }

@@ -37,7 +37,7 @@ namespace CArray {
         // --- OPERATOR ---
 
         Array1<T>& operator[](int index);
-        Array1<T>& operator[](int index) const;
+        const Array1<T>& operator[](int index) const;
         bool operator==(Array2<T> &other) const;
 
         Array2<T> operator+(Array2<T> &other) const; 
@@ -52,13 +52,33 @@ namespace CArray {
 
         Array2<T> operator+(Array1<T> &other) const; 
         Array2<T> operator-(Array1<T> &other) const; 
-        Array2<T> operator*(Array2<float> other) const;
+        Array2<T> operator*(Array1<T> &other) const;
         Array2<T> operator/(Array1<T> &other) const;
 
         void operator+=(Array1<T> &other); 
         void operator-=(Array1<T> &other); 
         void operator*=(Array1<T> &other);
         void operator/=(Array1<T> &other);
+
+        Array2<T> operator+(const Array2<T> &other) const;
+        Array2<T> operator-(const Array2<T> &other) const;
+        Array2<T> operator*(const Array2<T> &other) const;
+        Array2<T> operator/(const Array2<T> &other) const;
+
+        void operator+=(const Array2<T> &other);
+        void operator-=(const Array2<T> &other);
+        void operator*=(const Array2<T> &other);
+        void operator/=(const Array2<T> &other);
+
+        Array2<T> operator+(const Array1<T> &other) const;
+        Array2<T> operator-(const Array1<T> &other) const;
+        Array2<T> operator*(const Array1<T> &other) const;
+        Array2<T> operator/(const Array1<T> &other) const;
+
+        void operator+=(const Array1<T> &other);
+        void operator-=(const Array1<T> &other);
+        void operator*=(const Array1<T> &other);
+        void operator/=(const Array1<T> &other);
 
         Array2<T> operator+(T other) const;
         Array2<T> operator-(T other) const;

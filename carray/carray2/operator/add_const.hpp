@@ -7,7 +7,7 @@
 #include <stdexcept>
 
 template<typename T>
-CArray::Array2<T> CArray::Array2<T>::operator+(CArray::Array2<T> &other) const {
+CArray::Array2<T> CArray::Array2<T>::operator+(const CArray::Array2<T> &other) const {
     std::size_t row1 = this->size()[0];
     std::size_t col1 = this->size()[1];
     std::size_t row2 = other.size()[0];
@@ -24,12 +24,13 @@ CArray::Array2<T> CArray::Array2<T>::operator+(CArray::Array2<T> &other) const {
 }
 
 template<typename T>
-CArray::Array2<T> CArray::Array2<T>::operator+(CArray::Array1<T> &other) const {
+CArray::Array2<T> CArray::Array2<T>::operator+(const CArray::Array1<T> &other) const {
     std::size_t row1 = this->size()[0];
     std::size_t col1 = this->size()[1];
     std::size_t size = other.size();
 
     if(col1 != size) {
+        printf("row: %d x col: %d, size: %d\n", row1, col1, size);
         throw std::out_of_range("Matricies dont match");
     }
 
@@ -42,21 +43,7 @@ CArray::Array2<T> CArray::Array2<T>::operator+(CArray::Array1<T> &other) const {
 }
 
 template<typename T>
-CArray::Array2<T> CArray::Array2<T>::operator+(T other) const {
-    std::size_t row1 = this->size()[0];
-    std::size_t col1 = this->size()[1];
-
-    CArray::Array2<T> out = *this;
-    for (int i = 0; i < row1; i++)
-        for (int j = 0; j < col1; j++)
-            out[i][j] += other;
-
-    return out;
-}
-
-
-template<typename T>
-void CArray::Array2<T>::operator+=(CArray::Array2<T> &other) {
+void CArray::Array2<T>::operator+=(const CArray::Array2<T> &other) {
     std::size_t row1 = this->size()[0];
     std::size_t col1 = this->size()[1];
     std::size_t row2 = other.size()[0];
@@ -70,7 +57,7 @@ void CArray::Array2<T>::operator+=(CArray::Array2<T> &other) {
 }
 
 template<typename T>
-void CArray::Array2<T>::operator+=(CArray::Array1<T> &other) {
+void CArray::Array2<T>::operator+=(const CArray::Array1<T> &other) {
     std::size_t row1 = this->size()[0];
     std::size_t col1 = this->size()[1];
     std::size_t size = other.size();
@@ -80,14 +67,4 @@ void CArray::Array2<T>::operator+=(CArray::Array1<T> &other) {
     for (int i = 0; i < row1; i++)
         for (int j = 0; j < col1; j++)
             this->_array[i][j] += other[j];
-}
-
-template<typename T>
-void CArray::Array2<T>::operator+=(T other) {
-    std::size_t row1 = this->size()[0];
-    std::size_t col1 = this->size()[1];
-
-    for (int i = 0; i < row1; i++)
-        for (int j = 0; j < col1; j++)
-            this->_array[i][j] += other;
 }

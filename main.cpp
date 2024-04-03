@@ -57,13 +57,13 @@ int main() {
 
         if (i % 100 == 0)
             printf("Iterations: %d | Loss: %f\n", i, loss);
+
         // backward
         Array2<float> delta2 = z2 - norm_output;
         Array2<float> t_w2 = w2.t();
 
         Array2<float> d_sig = deriv_sigmoid(z1);
-        Array2<float> delta1 = delta2.dot(t_w2);
-        delta1 *= d_sig;
+        Array2<float> delta1 = delta2.dot(t_w2) * d_sig;
 
         Array2<float> w2_gradient = a1.t().dot(delta2) * learning_rate;
         Array1<float> b2_gradient = delta2.sum() * learning_rate;
@@ -73,14 +73,14 @@ int main() {
         b2 -= b2_gradient;
         w1 -= w1_gradient;
         b1 -= b1_gradient;
+
+        w2 -= (a1.t().dot(delta2) * learning_rate);
     }
 
     Array2<float> z1 = linear(new_input_norm, w1, b1);
     Array2<float> a1 = relu(z1);
     Array2<float> z2 = linear(a1, w2, b2);
-    Array2<float> output = z2;
-    output *= output_std;
-    output += output_mean;
+    Array2<float> output = z2 * output_std + output_mean;
     output.print();
 
     return 0;

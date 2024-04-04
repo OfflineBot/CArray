@@ -1,14 +1,10 @@
-//
-// Created by Flint on 02.04.2024.
-//
 
-#ifndef CORRECT_CARRAY_RELU_HPP
-#define CORRECT_CARRAY_RELU_HPP
+#pragma once
 
 #include "../functions.hpp"
 
 template<typename T>
-CArray::Array2<T> relu(CArray::Array2<T> &data) {
+CArray::Array2<T> relu(const CArray::Array2<T> &data) {
 
     std::size_t row = data.size()[0];
     std::size_t col = data.size()[1];
@@ -22,7 +18,7 @@ CArray::Array2<T> relu(CArray::Array2<T> &data) {
 }
 
 template<typename T>
-CArray::Array2<T> deriv_relu(CArray::Array2<T> &data) {
+CArray::Array2<T> deriv_relu(const CArray::Array2<T> &data) {
 
     std::size_t row = data.size()[0];
     std::size_t col = data.size()[1];
@@ -34,5 +30,3 @@ CArray::Array2<T> deriv_relu(CArray::Array2<T> &data) {
 
     return out;
 }
-
-#endif //CORRECT_CARRAY_RELU_HPP

@@ -1,9 +1,5 @@
-//
-// Created by Flint on 01.04.2024.
-//
 
-#ifndef CORRECT_CARRAY_CARRAY_HPP
-#define CORRECT_CARRAY_CARRAY_HPP
+#pragma once
 
 #include "./carray1/carray1.hpp"
 #include "./carray2/carray2.hpp"
@@ -11,4 +7,3 @@
 
 #include "functions/functions.hpp"
 
-#endif //CORRECT_CARRAY_CARRAY_HPP

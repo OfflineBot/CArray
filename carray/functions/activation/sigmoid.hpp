@@ -1,15 +1,11 @@
-//
-// Created by Flint on 02.04.2024.
-//
 
-#ifndef CORRECT_CARRAY_SIGMOID_HPP
-#define CORRECT_CARRAY_SIGMOID_HPP
+#pragma once
 
 #include "../functions.hpp"
 #include <cmath>
 
 template<typename T>
-CArray::Array2<T> sigmoid(CArray::Array2<T> &data) {
+CArray::Array2<T> sigmoid(const CArray::Array2<T> &data) {
 
     std::size_t row = data.size()[0];
     std::size_t col = data.size()[1];
@@ -24,7 +20,7 @@ CArray::Array2<T> sigmoid(CArray::Array2<T> &data) {
 }
 
 template<typename T>
-CArray::Array2<T> deriv_sigmoid(CArray::Array2<T> &data) {
+CArray::Array2<T> deriv_sigmoid(const CArray::Array2<T> &data) {
 
     std::size_t row = data.size()[0];
     std::size_t col = data.size()[1];
@@ -41,4 +37,3 @@ CArray::Array2<T> deriv_sigmoid(CArray::Array2<T> &data) {
     return out;
 }
 
-#endif //CORRECT_CARRAY_SIGMOID_HPP

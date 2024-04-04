@@ -47,6 +47,16 @@ namespace CArray {
         void operator*=(Array1<T> &other);
         void operator/=(Array1<T> &other);
 
+        Array1<T> operator+(const Array1<T> &other) const;
+        Array1<T> operator-(const Array1<T> &other) const;
+        Array1<T> operator*(const Array1<T> &other) const;
+        Array1<T> operator/(const Array1<T> &other) const;
+
+        void operator+=(const Array1<T> &other);
+        void operator-=(const Array1<T> &other);
+        void operator*=(const Array1<T> &other);
+        void operator/=(const Array1<T> &other);
+
         Array1<T> operator+(T other) const;
         Array1<T> operator-(T other) const;
         Array1<T> operator*(T other) const;

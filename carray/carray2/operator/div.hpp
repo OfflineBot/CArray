@@ -29,10 +29,7 @@ CArray::Array2<T> CArray::Array2<T>::operator/(CArray::Array1<T> &other) const {
     std::size_t col1 = this->size()[1];
     std::size_t size = other.size();
 
-    if(col1 != size) {
-        printf("row: %d x col: %d, size: %d\n", row1, col1, size);
-        throw std::out_of_range("Matricies dont match");
-    }
+    if(col1 != size) throw std::out_of_range("Matricies dont match");
 
     CArray::Array2<T> out = *this;
     for (int i = 0; i < row1; i++)

@@ -21,6 +21,8 @@ namespace CArray
         Array2<T>& operator[](int index) const;
 
     };
+
+
 }
 
 #include "./operator/operator.hpp"

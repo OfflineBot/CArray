@@ -65,14 +65,17 @@ int main() {
         Array2<float> d_sig = deriv_sigmoid(z1);
         Array2<float> delta1 = delta2.dot(t_w2) * d_sig;
 
-        Array2<float> w2_gradient = a1.t().dot(delta2) * learning_rate;
-        Array1<float> b2_gradient = delta2.sum() * learning_rate;
-        Array2<float> w1_gradient = norm_input.t().dot(delta1) * learning_rate;
-        Array1<float> b1_gradient = delta1.sum() * learning_rate;
-        w2 -= w2_gradient;
-        b2 -= b2_gradient;
-        w1 -= w1_gradient;
-        b1 -= b1_gradient;
+        // gradients
+        Array2<float> w2_gradient = a1.t().dot(delta2);
+        Array1<float> b2_gradient = delta2.sum();
+        Array2<float> w1_gradient = norm_input.t().dot(delta1);
+        Array1<float> b1_gradient = delta1.sum();
+
+        // update
+        w2 -= w2_gradient * learning_rate;
+        b2 -= b2_gradient * learning_rate;
+        w1 -= w1_gradient * learning_rate;
+        b1 -= b1_gradient * learning_rate;
     }
 
     Array2<float> z1 = linear(new_input_norm, w1, b1);

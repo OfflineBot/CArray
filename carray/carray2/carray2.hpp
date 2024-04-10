@@ -1,8 +1,6 @@
 
 #pragma once
 
-#ifnde
-
 #include <vector>
 #include <cstddef>
 #include "../carray.hpp"

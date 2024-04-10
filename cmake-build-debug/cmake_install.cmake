@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Flint/Desktop/correct_carray
+# Install script for directory: C:/Users/Flint/Desktop/ai_carray/ai_carray
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Flint/Desktop/correct_carray/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Flint/Desktop/ai_carray/ai_carray/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

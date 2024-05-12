@@ -40,7 +40,7 @@ int main() {
     w2.random_uniform(min, max);
     b2.random_uniform(min, max);
 
-
+    // loop
     for (int i = 0; i < iterations; i++) {
 
         // forward
